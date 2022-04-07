@@ -3,7 +3,7 @@ import Redis from 'ioredis'
 // Persistent key-value store is provided by Redis, hosted on Upstash
 // https://vercel.com/integrations/upstash
 const kv = new Redis(process.env.REDIS_URL)
-const kv_prefix = process.env.KV_PREFIX || 'TTT_'
+const kv_prefix = process.env.NEXT_PUBLIC_KV_PREFIX || 'TTT_'
 
 export async function getOdAuthTokens(): Promise<{ accessToken: unknown; refreshToken: unknown }> {
   const accessToken = await kv.get(kv_prefix + 'access_token')
